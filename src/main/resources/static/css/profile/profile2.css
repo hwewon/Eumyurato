@@ -41987,7 +41987,7 @@ code:not([class*=language-]) {
     border-bottom-color: inherit
 }
 
-.table td, .table th, .table tr {
+.table th, .table tr {
     border-color: inherit;
     border-width: inherit;
     border-style: inherit;
@@ -41997,6 +41997,20 @@ code:not([class*=language-]) {
     color: inherit;
     height: inherit;
     min-height: inherit
+}
+
+.table td{
+    border-color: inherit;
+    border-width: inherit;
+    border-style: inherit;
+    text-transform: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    height: 150px;
+    min-height: inherit;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .table td:first-child, .table th:first-child, .table tr:first-child {
@@ -42154,10 +42168,15 @@ code:not([class*=language-]) {
 .table.g-3 td, .table.g-3 th {
     padding: .75rem
 }
-
-.table.gy-3 td, .table.gy-3 th {
+/* td 패딩 수정 */
+.table.gy-3 th {
     padding-top: .75rem;
     padding-bottom: .75rem
+}
+
+.table.gy-3 td{
+    padding-top: .25rem;
+    padding-bottom: .25rem
 }
 
 .table.gx-3 td, .table.gx-3 th {
@@ -49636,4 +49655,8 @@ body {
 
 #nid-empty {
     margin-top: 0;
+}
+
+#reservationTbody td{
+    height: 0px;
 }

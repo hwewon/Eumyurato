@@ -19,7 +19,7 @@ function getAdminData() {
 }
 
 function displayAdminData(admin) {
-    document.getElementById("admin-id").value = admin.id;
+    document.getElementById("admin-id").textContent = admin.id;
     document.getElementById("admin-name").value = admin.name;
     document.getElementById("admin-num").value = admin.num;
     document.getElementById("admin-email").value = admin.email;

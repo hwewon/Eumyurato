@@ -1,16 +1,16 @@
 package com.e114.e114_eumyuratodemo1.service;
 
 import com.e114.e114_eumyuratodemo1.dto.*;
-import com.e114.e114_eumyuratodemo1.jdbc.EnterpriseMemberDAO;
+import com.e114.e114_eumyuratodemo1.dao.EnterpriseMemberDAO;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -192,7 +192,7 @@ public class EnterpriseService {
     public int deleteSmallConcertByEnt(int conId){
 
         List<String> sId = enterpriseMemberDAO.getScheduleId(conId);
-        
+
         List<String> rId = enterpriseMemberDAO.getReservationId(sId);
 
         if(rId.toArray().length != 0){
@@ -213,8 +213,27 @@ public class EnterpriseService {
 
         return 1;
     }
-}
 
+    public EnterpriseMemberDTO getEntInfoById(String entId){
+        return enterpriseMemberDAO.getEntInfoById(entId);
+    };
+
+    public List<InfoDTO> getInfo(){
+        return enterpriseMemberDAO.getInfo();
+    };
+
+    public EnterpriseMemberDTO findById(String id){
+        return enterpriseMemberDAO.findById(id);
+    };
+
+    public void updatePassword(String id, String password){
+        enterpriseMemberDAO.updatePassword(id, password);
+    };
+
+    public boolean isIdDuplicated(String id){
+        return enterpriseMemberDAO.isIdDuplicated(id);
+    };
+}
 
 
 

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Eumyurato</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/img/E114_logo.png}"/>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link th:href="@{/css/main/main.css}" rel="stylesheet"/>
+    <!-- jQuery -->
+    <script th:src="@{https://code.jquery.com/jquery-3.4.1.slim.min.js}" crossorigin="anonymous"></script>
+    <!-- Popper.js -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/popperjs/core2.9.3/dist/umd/popper.min.js}"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JavaScript -->
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"
+            crossorigin="anonymous"></script>
+
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="navLogin" style="margin-right: 150px;">
+    <div class="container" style="margin-left: 10px;">
+        <a class="navbar-brand" href="#page-top"><img th:src="@{/img/logo_name.png}"></a>
+    </div>
+    <button type="button" class="btn btn-primary fw-bolder fs-5 px-5 py-2 my-3 me-5" id="loginBtn"
+            th:onclick="|location.href='@{/loginjoin/common/login}'|">로그인
+    </button>
+</nav>
+
+<div class="d-flex flex-column flex-root">
+        <div class="flex-column flex-lg-row-auto bg-primary pt-15 pt-lg-0 center" id="leftArea1">
+            <!--begin::Aside Top-->
+            <div class="flex-row-fluid flex-center flex-column-auto flex-column text-center mb-5 align-items-center">
+                <!--begin::Aside Logo-->
+                <a class="mb-6" th:href="@{/home}">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 100%; width: 100%;">
+                        <img alt="로고" id="logo2" th:src="@{/img/logo_name.png}" style="width: 400px; height: 70px; margin-top: 80px;"/>
+                    </div>
+                </a>
+                <div class="menu-wrapper menu-column menu-fit mt-10">
+                    <div class="menu-sub menu-fit menu-sub-accordion show mb-20">
+                        <h1 class="menu-content mb-1 mt-10 text-center" style="font-weight: bold; font-size: 30px;">마이페이지</h1>
+                        <div class="separator border-dark my-1 mx-auto" style="width: 60%; border-width: 3px;"></div>
+                        <div class="menu-item" style="margin: 3px">
+                            <a class="text-dark text-hover-primary ms-3 py-2" th:href="@{/profile/admin/account}">
+                                <span class="menu-title" style="font-size: 20px; margin-right: 85px;">내 계정</span>
+                            </a>
+                        </div>
+                        <div class="menu-item" style="margin: 3px">
+                            <a class="text-dark text-hover-primary ms-3 py-2" th:href="@{/profile/admin/reservation/view}">
+                                <span class="menu-title" style="font-size: 20px;">사용자 예약 내역</span>
+                            </a>
+                        </div>
+                        <div class="menu-item" style="margin: 3px">
+                            <a class="text-dark text-hover-primary ms-3 py-2" th:href="@{/profile/admin/management/view}">
+                                <span class="menu-title" style="font-size: 20px; margin-right: 65px;">공연 관리</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="menu-wrapper menu-column menu-fit mt-5">
+                        <div class="menu-sub menu-fit menu-sub-accordion show">
+                            <h1 class="menu-content mb-1 mt-10 text-center" style="font-size: 30px; font-weight: bold;">통합 정보 조회</h1>
+                            <div class="separator border-dark my-1 mx-auto" style="width: 60%; border-width: 3px;"></div>
+                            <div class="menu-item" style="margin: 3px">
+                                <a class="text-dark text-hover-primary ms-3 py-2"
+                                   th:href="@{/profile/admin/total/view}">
+                                    <span class="menu-title" style="font-size: 20px; margin-right: 65px;">회원 정보</span>
+                                </a>
+                            </div>
+                            <div class="menu-item" style="margin: 3px">
+                                <a class="text-dark text-hover-primary ms-3 py-2"
+                                   th:href="@{/profile/admin/total/chart}">
+                                    <span class="menu-title" style="font-size: 20px; margin-right: 20px;">회원 종합 차트</span>
+                                </a>
+                            </div>
+                            <div class="menu-item" style="margin: 3px">
+                                <a class="text-dark text-hover-primary ms-3 py-2"
+                                   th:href="@{/profile/admin/info/view}">
+                                    <span class="menu-title" style="font-size: 20px; margin-right: 70px;">공지사항</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a id="logoutBtn" class="ms-5 me-15" style="position: relative; top: 200px; left: 300px;">
+                <img th:src="@{/img/logout.png}" style="height: 30px; width: 30px;">
+            </a>
+        </div>
+
+        <div class="d-flex flex-column flex-lg-row-auto bg-primary pt-15 pt-lg-0 d-none d-lg-flex" id="leftArea2">
+            <!--begin::Aside Logo-->
+            <a class="d-flex justify-content-center align-items-center" style="height: 100%; width: 100%;">
+                <img alt="로고" th:src="@{/img/logo_name.png}" style="width: 400px; height: 70px;"/>
+            </a>
+            <!--end::Aside Logo-->
+        </div>
+
+        <!--사이드-->
+        <!--begin::Aside-->
+        <!--begin::Content-->
+        <!--메인폼-->
+        <div class="login-content flex-lg-row-fluid d-flex flex-column overflow-hidden py-10 py-lg-20 p-lg-7 mx-auto mw-1000px w-100"
+             style="display: flex">
+            <!--begin::Wrapper-->
+            <!--begin::Signin Form-->
+            <div style="display: flex;">
+            <span class="form w-450px h-1000px  needs-validation text-center" id="kt_login_signin_form1" novalidate>
+                <div class="pb-5 pb-lg-1">
+                    <p class="fw-bolder text-dark display-6 text-start" style="font-size: 50px; margin-top: 70px; margin-bottom: 30px;">내 계정</p>
+                </div>
+                <!--begin::Image input-->
+                <div class="image-input image-input-outline"
+                     data-kt-image-input="true"
+                     style="display: flex; justify-content: center; align-items: center; width: 350px; height: 400px; margin-right: 50px; margin-top: 50px"
+                     id="profileImg">
+                </div>
+                <!--end::Image input-->
+            </span>
+                <span class="form w-400px  needs-validation text-center" id="kt_login_signin_form2" style="margin-top: 110px;" novalidate>
+                <div class="mb-5 mw-450px text-center" style="margin-top: 55px">
+                    <label class="form-label fs-6 fw-bolder text-dark pt-5" style="float:left;">아이디</label>
+                    <input autocomplete="off" class="form-control form-control-lg form-control-solid"
+                           name="id" id="admin-id"
+                           placeholder="" style="border-color: #0099FF; font-weight: bold" type="text" readonly/>
+                </div>
+                <div class="fv-row mb-5">
+                    <label class="form-label fs-6 fw-bolder text-dark pt-5" style="float:left;">이름</label>
+                    <input autocomplete="off" class="form-control form-control-lg form-control-solid"
+                           name="fullname" id="admin-name"
+                           placeholder="" style="border-color: #0099FF; font-weight: bold" type="text" readonly/>
+                </div>
+                <div class="fv-row mb-5">
+                    <label class="form-label fs-6 fw-bolder text-dark pt-5" style="float:left;">사업자 등록번호</label>
+                    <input autocomplete="off" class="form-control form-control-lg form-control-solid"
+                           name="num" id="admin-num"
+                           placeholder="" style="border-color: #0099FF; font-weight: bold" type="text" readonly/>
+                </div>
+                <div class="fv-row mb-5">
+                    <label class="form-label fs-6 fw-bolder text-dark pt-5" style="float:left;">이메일</label>
+                    <input autocomplete="off" class="form-control form-control-lg form-control-solid"
+                           name="email" id="admin-email"
+                           placeholder="" style="border-color: #0099FF; font-weight: bold" type="email" readonly/>
+                </div>
+                <div class="fv-row mb-5">
+                    <label class="form-label fs-6 fw-bolder text-dark pt-5" style="float:left;">휴대번호</label>
+                    <input autocomplete="off" class="form-control form-control-lg form-control-solid"
+                           name="phone" id="admin-phone"
+                           placeholder="" style="border-color: #0099FF; font-weight: bold" type="text" readonly/>
+                </div>
+            </span>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <!-- Footer Location-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">TEAM E114</h4>
+                <p class="lead mb-0">
+                    외향인 한명과 내향인 4명 모인 팀
+                    <br/>
+                    인생에 있어서 최고의 행복은 우리가 사랑받고 있다는 확신이다.
+                </p>
+            </div>
+            <!-- Footer Social Icons-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Our Github</h4>
+                <a class="btn btn-outline-light btn-social mx-1" th:href="@{https://github.com/bomin1996}">
+                    <img th:src="@{/img/bom.png}" alt="GitHub Profile"
+                         style="width: 3.25rem; height: 3.25rem; border-radius: 50%;"/>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" th:href="@{https://github.com/thdhksrb}">
+                    <img th:src="@{/img/swk.jpg}" alt="GitHub Profile"
+                         style="width: 3.25rem; height: 3.25rem; border-radius: 50%;"/>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" th:href="@{https://github.com/noeypark}">
+                    <img th:src="@{/img/noey.jpg}" alt="GitHub Profile"
+                         style="width: 3.25rem; height: 3.25rem; border-radius: 50%;"/>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" th:href="@{https://github.com/Minchae128}">
+                    <img th:src="@{/img/smc.jpg}" alt="GitHub Profile"
+                         style="width: 3.25rem; height: 3.25rem; border-radius: 50%;"/>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" th:href="@{https://github.com/hwewon}">
+                    <img th:src="@{/img/hea.jpg}" alt="GitHub Profile"
+                         style="width: 3.25rem; height: 3.25rem; border-radius: 50%;"/>
+                </a>
+            </div>
+            <!-- Footer About Text-->
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4">TEAM INTRO</h4>
+                <p class="lead mb-0">
+                    같이 성장할 기업의 연락을 기다립니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script th:inline="javascript">
+    const loginUserJson = /*[[${loginUserJson}]]*/ null;
+    if (loginUserJson !== null) {
+        const loginUser = JSON.parse(loginUserJson);
+        window.sessionStorage.setItem("loginUser", loginUserJson);
+    }
+</script>
+<script th:src="@{/js/main/home.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-decode/2.2.0/jwt-decode.min.js"></script>
+</body>
+</html>

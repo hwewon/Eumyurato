@@ -1,4 +1,4 @@
-package com.e114.e114_eumyuratodemo1.jdbc;
+package com.e114.e114_eumyuratodemo1.dao;
 
 import com.e114.e114_eumyuratodemo1.dto.*;
 import org.apache.ibatis.annotations.Mapper;
@@ -10,14 +10,7 @@ import java.util.Map;
 @Mapper
 public interface EnterpriseMemberDAO{
     EnterpriseMemberDTO findById(@Param("id") String id);
-    String findPwdById(@Param("id") String id);
-    EnterpriseMemberDTO findByPwd(String pwd);
-    EnterpriseMemberDTO findByName(String name);
-    EnterpriseMemberDTO findNum (String num);
     EnterpriseMemberDTO findByEmail(String email);
-    EnterpriseMemberDTO findByPhone(String phone);
-    EnterpriseMemberDTO findByAdminNum(String adminNum);
-    EnterpriseMemberDTO findIByImage(String image);
 
     //회원 가입
     int insert(EnterpriseMemberDTO enterpriseMemberDTO);

@@ -1,11 +1,8 @@
 package com.e114.e114_eumyuratodemo1.controller;
 
 import com.e114.e114_eumyuratodemo1.dto.*;
-import com.e114.e114_eumyuratodemo1.jdbc.CommonMemberDAO;
 import com.e114.e114_eumyuratodemo1.jwt.JwtUtils;
-import com.e114.e114_eumyuratodemo1.mapper.CommonMemberMapper;
 import com.e114.e114_eumyuratodemo1.service.CommonService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +16,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+//일반회원 페이지 컨트롤러
 @Controller
 public class CommonController {
-
-    @Autowired
-    private CommonMemberDAO commonMemberDAO;
 
     @Autowired
     private CommonService commonService;
@@ -31,8 +26,6 @@ public class CommonController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    @Autowired
-    private CommonMemberMapper commonMemberMapper;
 
     @GetMapping("/profile/common/account")
     public String commontAccount(){
@@ -48,7 +41,7 @@ public class CommonController {
 
         if (commonUserId != null) {
             // ID를 이용해 관리자 정보를 가져옵니다.
-            CommonMemberDTO common = commonMemberDAO.getCommonInfoById(commonUserId);
+            CommonMemberDTO common = commonService.getCommonInfoById(commonUserId);
             if (common != null) {
                 return ResponseEntity.ok(common);
             } else {
@@ -62,7 +55,7 @@ public class CommonController {
     // 회원 정보 수정 폼 요청 처리
     @GetMapping("/profile/common/modify")
     public String commonAccountModify() {
-        return "html/profile/accountModify/profile_common_accountModify";
+        return "html/profile/accountModify/profile_common_accountModify_exam";
     }
 
     // 회원 정보 수정 처리
@@ -83,12 +76,12 @@ public class CommonController {
     @GetMapping("/profile/common/reservation/view")
     public String getCommonReservations() {
 
-        return "html/profile/reservation/profile_common_reservation";
+        return "html/profile/reservation/profile_common_reservation_exam";
     }
 
     @GetMapping("/profile/common/info/view")
     public String commonInfoview(Model model) {
-        List<InfoDTO> infos =  commonMemberDAO.getInfo();
+        List<InfoDTO> infos =  commonService.getInfo();
 
         model.addAttribute("infos", infos);
         return "html/profile/board/profile_common_board";
@@ -96,8 +89,8 @@ public class CommonController {
 
     @GetMapping("/profile/common/reservation")
     public ResponseEntity<?> getCommonReservationList(HttpServletRequest request,
-                                            @RequestParam(value = "column", required = false) String column,
-                                            @RequestParam(value = "keyword", required = false) String keyword) {
+                                                      @RequestParam(value = "column", required = false) String column,
+                                                      @RequestParam(value = "keyword", required = false) String keyword) {
 
         String token = jwtUtils.getAccessToken(request);
         String cId = jwtUtils.getId(token);

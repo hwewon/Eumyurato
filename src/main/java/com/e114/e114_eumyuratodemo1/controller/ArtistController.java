@@ -1,11 +1,9 @@
 package com.e114.e114_eumyuratodemo1.controller;
 
 import com.e114.e114_eumyuratodemo1.dto.*;
-import com.e114.e114_eumyuratodemo1.jdbc.ArtistMemberDAO;
 import com.e114.e114_eumyuratodemo1.jwt.JwtUtils;
 import com.e114.e114_eumyuratodemo1.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,11 +17,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//아티스트 회원 페이지 컨트롤러
 @Controller
 public class ArtistController {
 
-    @Autowired
-    private ArtistMemberDAO artistMemberDAO;
 
     @Autowired
     private ArtistService artistService;
@@ -46,7 +43,7 @@ public class ArtistController {
 
         if (artistUserId != null) {
             // ID를 이용해 아티스트 정보 가져오기
-            ArtistMemberDTO artist = artistMemberDAO.getArtistInfoById(artistUserId);
+            ArtistMemberDTO artist = artistService.getArtistInfoById(artistUserId);
             if (artist != null) {
                 return ResponseEntity.ok(artist);
             } else {
@@ -90,8 +87,8 @@ public class ArtistController {
 
     @GetMapping("/profile/artist/management")
     public ResponseEntity<?> getBuskingList(HttpServletRequest request,
-                                          @RequestParam(value = "column", required = false) String column,
-                                          @RequestParam(value = "keyword", required = false) String keyword) {
+                                            @RequestParam(value = "column", required = false) String column,
+                                            @RequestParam(value = "keyword", required = false) String keyword) {
 
         String token = jwtUtils.getAccessToken(request);
         String artId = jwtUtils.getId(token);
@@ -123,7 +120,7 @@ public class ArtistController {
 
     @GetMapping("/profile/artist/info/view")
     public String artistInfoview(Model model) {
-        List<InfoDTO> infos =  artistMemberDAO.getInfo();
+        List<InfoDTO> infos =  artistService.getInfo();
 
         model.addAttribute("infos", infos);
         return "html/profile/board/profile_artist_board";

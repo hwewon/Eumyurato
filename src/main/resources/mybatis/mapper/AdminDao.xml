@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.e114.e114_eumyuratodemo1.jdbc.AdminMemberDAO">
+<mapper namespace="com.e114.e114_eumyuratodemo1.dao.AdminMemberDAO">
     <select id="getArtistMembers" resultType="com.e114.e114_eumyuratodemo1.dto.ArtistMemberDTO">
         select *
         from artist_member
@@ -64,7 +64,7 @@
     <delete id="deleteTicket">
         DELETE FROM ticket WHERE rid = #{param1}
     </delete>
-    
+
     <select id="getAdminInfoById" resultType="com.e114.e114_eumyuratodemo1.dto.EnterpriseMemberDTO">
         SELECT *
         FROM enterprise_member

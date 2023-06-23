@@ -50,6 +50,7 @@ function displayReservationList(reservationList, currentPage) {
 
     reservationList.slice(start, end).forEach((reservation) => {
         const reservationRow = reservationTbody.insertRow();
+        reservationRow.style.height = '50px';
 
         const reservationDate = new Date(reservation.viewDate);
 
